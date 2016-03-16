@@ -113,6 +113,8 @@ class Cinema(QMainWindow):
     grid = QGridLayout()
     centralwidget.setLayout(grid)
     self.setCentralWidget(centralwidget)
+    self.setMinimumSize(750, 350)
+    self.setMaximumSize(750, 350)
     #init main layout
     #init first row
     for column in range(1, 23):
@@ -125,27 +127,22 @@ class Cinema(QMainWindow):
       if (column == 22):
         lbl = QLabel(str('Макс\nгруппа'))
         grid.addWidget(lbl, 0, column)
-      grid.setColumnStretch(column, 1)
-    #init first column
+    #init first column and check boxes
     for row in range(1, 11):
       lbl = QLabel(str(row))
       grid.addWidget(lbl, row, 0)
-      grid.setRowStretch(row, 1)
-    #init check boxes
-    for row in range(1, 11):
       for column in range(1, 21):
         chbox = QCheckBox()
         if (row >= 1 and row <= 3):
           chbox.setStyleSheet("background-color: lightgreen;")
-          grid.addWidget(chbox, row, column)
         elif (row >= 4 and row <= 7):
           chbox.setStyleSheet("background-color: yellow;")
-          grid.addWidget(chbox, row, column)
         else:
           chbox.setStyleSheet("background-color: lightblue;")
-          grid.addWidget(chbox, row, column)
+        grid.addWidget(chbox, row, column)
+    
       #.stateChanged.connect(self.changeTitle)
-
+    
     self.setWindowTitle('Кинотеатр')
     self.show()
 
