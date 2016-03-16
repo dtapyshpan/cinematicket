@@ -10,3 +10,7 @@ class Place(QCheckBox):
     Place.row = rpos
     Place.column = cpos
 
+  def getposition(self):
+    print("getpos")
+    return (Place.row, Place.column)
+
