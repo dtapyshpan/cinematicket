@@ -140,9 +140,12 @@ class Cinema(QMainWindow):
         else:
           chbox.setStyleSheet("background-color: lightblue;")
         grid.addWidget(chbox, row, column)
-    
-      #.stateChanged.connect(self.changeTitle)
-    
+        chbox.stateChanged.connect(self.changestate)
+      lbl1 = QLabel("20")
+      grid.addWidget(lbl1, row, 21)
+      lbl2 = QLabel("20")
+      grid.addWidget(lbl2, row, 22)
+
     self.setWindowTitle('Кинотеатр')
     self.show()
 
@@ -151,6 +154,9 @@ class Cinema(QMainWindow):
     result = option.exec_()
     if (result == QDialog.Accepted):
       Cinema.price1, Cinema.price2, Cinema.price3 = option.getprices()
+
+  def changestate(self):
+    print("ohoho")
 
 if __name__ == '__main__':
   app = QApplication(sys.argv)
